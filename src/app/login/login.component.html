@@ -1,0 +1,57 @@
+
+<div class="container" style="margin-top: 10% ;">
+  <form action="/action_page.php">
+    <div class="row">
+      <h2 style="text-align:center">Login with Social Media</h2>
+      <div class="vl">
+        <span class="vl-innertext">or</span>
+      </div>
+
+      <div class="col">
+        <a  class="fb btn" (click)="facebookLogin()">
+          <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+         </a>
+        <a  class="twitter btn" (click)="linkedinLogin()">
+          <i class="fa fa-twitter fa-fw"></i> Login with LinkedIn
+        </a>
+        <a  class="google btn" (click)="googleLogin()" ><i class="fa fa-google fa-fw">
+          </i> Login with Google+
+        </a>
+      </div>
+
+      <div class="col">
+        <div class="hide-md-lg">
+          <p>Or sign in manually:</p>
+        </div>
+
+        <input type="text" name="username" placeholder="Username" [(ngModel)]="userInfo.userName" required>
+        <input type="password" name="password" placeholder="Password" [(ngModel)]="userInfo.password" required>
+        <a  class="google btn" (click)="routeHome2()" ><i class="fa fa-google fa-fw">
+        </i> Login
+      </a>
+      </div>
+      
+    </div>
+  </form>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col" >
+      <a href="#" style="color:white; background-color: black" class="btn" (click)="routeHome()">Sign up</a>
+    </div>
+    <div class="col">
+      <a href="#" style="color:white; background-color: black" class="btn">Forgot password?</a>
+    </div>
+  </div>
+</div>  
+<div>
+  <img src='{{ user.photoUrl }}'>
+<div>
+  <h4>{{ user.name }}</h4>
+  <p>{{ user.email }}</p>
+</div> 
+
+<div>
+    <app-navdrop></app-navdrop>
+</div>
