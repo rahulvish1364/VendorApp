@@ -1,6 +1,6 @@
 
 <div class="container" style="margin-top: 10% ;">
-  <form action="/action_page.php">
+  <form [formGroup]="myform">
     <div class="row">
       <h2 style="text-align:center">Login with Social Media</h2>
       <div class="vl">
@@ -20,16 +20,23 @@
       </div>
 
       <div class="col">
-        <div class="hide-md-lg">
-          <p>Or sign in manually:</p>
+          <div >
+            <p style="font-weight: 30px; color: slateblue">Or sign in manually:</p>
+          </div>
+          <mat-form-field>
+          <input type="text" name="username" matInput style="background-color: rgb(76, 235, 192)" placeholder="email" formControlName="email"  required>
+          <mat-error style="color: red"  *ngIf="email.invalid && email.touched">Email is invalid</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <br>
+        <input type="password" name="password" style="background-color: rgb(76, 235, 192)" matInput placeholder="Password" formControlName="password"required>
+          <mat-hint align="end" style="color: brown" >length should be 8 and must have one letter and number</mat-hint>  
+        <mat-error style="color: red" *ngIf="password.invalid && password.touched">Your password don't look nice</mat-error>
+        </mat-form-field>
+          <br>
+          <br><br><br>
+          <input type="submit" (click)="logIn()" value="Login">
         </div>
-
-        <input type="text" name="username" placeholder="Username" [(ngModel)]="userInfo.userName" required>
-        <input type="password" name="password" placeholder="Password" [(ngModel)]="userInfo.password" required>
-        <a  class="google btn" (click)="routeHome2()" ><i class="fa fa-google fa-fw">
-        </i> Login
-      </a>
-      </div>
       
     </div>
   </form>
@@ -45,7 +52,7 @@
     </div>
   </div>
 </div>  
-<div>
+<!-- <div>
   <img src='{{ user.photoUrl }}'>
 <div>
   <h4>{{ user.name }}</h4>
@@ -54,4 +61,4 @@
 
 <div>
     <app-navdrop></app-navdrop>
-</div>
+</div> -->

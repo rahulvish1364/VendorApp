@@ -1,0 +1,110 @@
+<app-navbar></app-navbar>
+
+<form [formGroup]="regForm" style="display: inline-block; text-align: center; margin-top: 11% ">
+    <hr>
+    Value: {{regForm.value | json}}
+    <br>
+  <mat-form-field class="full">
+
+    <span>Enter userName</span> <input style="background-color: burlywood" matInput formControlName="userName" type="text"
+      required name="Enter userName">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full">
+
+    <span>Enter emailId</span> <input style="background-color: burlywood" matInput formControlName="email" type="text"
+      required name="Enter emailId">
+  </mat-form-field>
+
+  <hr>
+  <div formGroupName="contact">
+      <mat-form-field>
+            <span>Enter Your Address</span>   <input matInput style="background-color: burlywood" formControlName="address"
+                   type="text"
+                   required
+                   placeholder="">
+       
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+            <span>Enter your Phone Number </span><input matInput formControlName="phNumber"
+            style="background-color: burlywood"
+            type="text"
+            required
+            placeholder="">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+                <span>Enter your city</span><input matInput formControlName="city"
+                style="background-color: burlywood"
+                type="text"
+                required
+                placeholder="">
+            </mat-form-field>
+  </div>
+<hr>
+ <span>Click to Add Food that you offer</span>
+  <div formArrayName="food">
+    <div *ngFor="let food of foodForm.controls; let i = index" [formGroupName]="i">
+      <mat-form-field>
+        <span>Enter FoodName</span> <input style="background-color: burlywood" matInput formControlName="foodName" type="text"
+          required name="foodName">
+
+      </mat-form-field>
+
+      <mat-form-field>
+        <span>Enter foodPrice</span> <input style="background-color:cadetblue" matInput formControlName="price" type="number"
+          required name="price">
+      </mat-form-field>
+      <button mat-raised-button color="warn" (click)="deleteFood(i)">Delete</button>
+    </div>
+  </div>
+  <button mat-raised-button color="primary" style="background-color: rgb(89, 225, 209); color: white" (click)="addFood()">Add
+    Food</button>
+
+  <hr>
+  <h4>Select the type of events you prefer managing</h4>
+<div  formGroupName="event">
+
+     <mat-checkbox  formControlName="birthday" style="background-color:  yellowgreen ; " >Birthday</mat-checkbox>
+     <mat-checkbox  formControlName="marriage" style="background-color:aqua" color="primary">Marriage</mat-checkbox>
+     <mat-checkbox  formControlName="musicevent" style="background-color: yellowgreen" color="primary">Musicevent</mat-checkbox>
+     <mat-checkbox  formControlName="corporatemeeting" style="background-color:aqua" color="primary">Corporatemeeting</mat-checkbox>
+</div>
+<hr>
+<h4>Enter the Venues that are Availed by you</h4>
+<div formArrayName="venue">
+
+        <div *ngFor="let venue of VenueForm.controls; let i = index" [formGroupName]="i">
+                <mat-form-field>
+                  <span>Enter Venue Address</span> <input style="background-color: burlywood" matInput formControlName="address" type="text"
+                    required name="foodName">
+          
+                </mat-form-field>
+          
+                <mat-form-field>
+                  <span>Enter Venue Booking Price</span> <input style="background-color:cadetblue" matInput formControlName="price" type="number"
+                    required name="price">
+                </mat-form-field>
+
+                <mat-form-field>
+                        <span>Enter Min Capacity</span> <input style="background-color:cadetblue" matInput formControlName="min" type="number"
+                          required name="price">
+                      </mat-form-field>
+                <mat-form-field>
+                            <span>Enter Max Capacity</span> <input style="background-color:cadetblue" matInput formControlName="max" type="number"
+                              required name="price">
+                </mat-form-field>
+                <mat-form-field>
+                        <span>Enter image Url of Venue</span> <input style="background-color:cadetblue" matInput formControlName="imageUrl" type="text"
+                          required name="price">
+            </mat-form-field>
+      
+
+                <button mat-raised-button color="warn" (click)="deleteVenue(i)">Delete</button>
+              </div>
+            </div>
+            <button mat-raised-button color="primary" style="background-color: rgb(89, 225, 209); color: white" (click)="addVenue()">Add
+              more Venue</button>
+</form>
